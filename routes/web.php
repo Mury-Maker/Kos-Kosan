@@ -8,3 +8,6 @@ Route::get('/', function () {
 Route::get('/admin/Kelola_Data_Kos', function () {
     return view('admin.KelolaDataKos');
 });
+Route::get('/landingPage', function () {
+    return view('landingPage');
+});
