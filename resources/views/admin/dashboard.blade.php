@@ -72,16 +72,16 @@
         <!-- Card 5 -->
         <a href="#pembaruan"
            class="block bg-white rounded-2xl shadow-md p-6 hover:shadow-xl hover:bg-gray-50 transition">
-            <h3 class="flex items-center gap-2 text-lg font-semibold text-[#F96464]">
+            <h3 class="flex items-center gap-2 text-lg font-semibold text-[#800080]">
                 <img src="img/diagram.png" alt="" class="w-5 h-5">
                 Kos Bebas
             </h3>
             <div class="flex items-end justify-between mt-3 mb-2">
                 <div class="flex items-baseline gap-1 ">
-                    <h1 class="text-6xl font-bold text-[#F96464]">2</h1>
+                    <h1 class="text-6xl font-bold text-[#800080]">2</h1>
                     <p class="text-gray-500">data</p>
                 </div>
-                <i class="fa-solid fa-arrow-up text-[#F96464]"></i>
+                <i class="fa-solid fa-arrow-up text-[#800080]"></i>
             </div>
         </a>
     </div>
@@ -97,14 +97,12 @@
 <div class="data-kos mt-6 p-6 bg-white rounded-2xl shadow-md">
     <div class="flex items-center justify-between mb-4">
         <h3 class="text-lg font-semibold">Pendataan Kos</h3>
-        <div class="flex items-center justify-between mb-4 gap-4">
-            <div class="relative w-96">
-                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                    </svg>
+        <div class="flex items-center justify-between mb-4">
+            <div class="relative w-full px-4">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-8 pointer-events-none">
+                    <i class="fas fa-search text-gray-500"></i>
                 </div>
-                <input type="search" placeholder="Cari data..."  class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#1ABC9C] focus:border-[#1ABC9C] text-gray-600 placeholder-gray-400"/>
+                <input type="search" placeholder="Cari data..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#1ABC9C] focus:border-[#1ABC9C] text-gray-600 placeholder-gray-400" />
             </div>
             <button class="btn-filter mr-2">
                 <img class="w-5 h-5" src="img/Vector.png" alt="">
