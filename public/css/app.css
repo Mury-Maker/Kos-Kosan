@@ -1,0 +1,27 @@
+/* Sidebar saat collapse */
+.sidebar-collapsed {
+    width: 5rem; /* w-20 */
+}
+
+/* sembunyikan teks menu */
+.sidebar-collapsed .sidebar-text {
+    display: none;
+}
+
+/* sembunyikan logo di sidebar saat collapse */
+.sidebar-collapsed .sidebar-logo {
+    display: none;
+}
+
+/* logo header default hidden → ditampilkan saat sidebar collapse */
+.header-logo.show {
+    display: flex !important;
+}
+
+#sidebar {
+    background-color: #704E98 !important; /* pakai warna ungu custom */
+}
+
+#mainHeader{
+    background-color: #ffffff !important; /* pakai warna ungu custom */
+}
