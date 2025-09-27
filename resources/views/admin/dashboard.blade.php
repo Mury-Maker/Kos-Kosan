@@ -87,12 +87,6 @@
     </div>
 </div>
 
-{{-- map --}}
-<div class="map mt-6 p-6 bg-white rounded-2xl shadow-md">
-    <h3 class="text-lg font-semibold mb-4">Peta Sebaran Kos di Sukorame</h3>
-    <iframe  width="100%" height="480"></iframe>
-</div>
-
 {{-- data kos --}}
 <div class="data-kos mt-6 p-6 bg-white rounded-2xl shadow-md">
     <div class="flex items-center justify-between mb-4">
@@ -142,6 +136,12 @@
             </tbody>
         </table>
     </div>
+</div>
+
+{{-- map --}}
+<div class="map mt-6 p-6 bg-white rounded-2xl shadow-md">
+    <h3 class="text-lg font-semibold mb-4">Peta Sebaran Kos di Sukorame</h3>
+    <iframe  width="100%" height="480"></iframe>
 </div>
 
 @endsection
