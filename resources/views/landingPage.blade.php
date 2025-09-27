@@ -29,7 +29,7 @@
         </li>
     </ul>
 
-    <a href="#" class="bg-[#704E98] text-white font-medium py-3 px-6 rounded-full">Login Admin</a>
+    <a href="{{ route('login') }}" class="bg-[#704E98] text-white font-medium py-3 px-6 rounded-full">Masuk Admin</a>
 </nav>
 
 <div class="p-8 text-center mt-20">

@@ -1,18 +1,18 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Kelola Data Kos')
+@section('title', 'Kelola User')
 
 @section('content')
 
 {{-- data kos --}}
 <div class="data-kos mt-2 p-6 bg-white rounded-2xl shadow-md">
     {{-- Title --}}
-    <h2 class="text-2xl font-bold mb-6">Pendataan Kos</h2>
+    <h2 class="text-2xl font-bold mb-6">Data User</h2>
 
     <div class="flex items-center justify-between mb-4">
         <!-- Tombol Tambah -->
-        <a href="/admin/form/formKelolaDataKos" class="border border-[#17DD2B] bg-[#17DD2B] text-white px-4 py-2 rounded-full hover:bg-white hover:text-[#17DD2B] transition">
-            <i class="fas fa-plus"></i> Tambah Kos
+        <a href="/admin/form/formKelolaUser" class="border border-[#17DD2B] bg-[#17DD2B] text-white px-4 py-2 rounded-full hover:bg-white hover:text-[#17DD2B] transition">
+            <i class="fas fa-plus"></i> Tambah User
         </a>
 
         <!-- Search + Filter -->
@@ -39,37 +39,26 @@
             <thead>
                 <tr class="bg-[#704E98] text-white text-left">
                     <th class="px-4 py-3">No</th>
-                    <th class="px-4 py-3">Nama Kos</th>
-                    <th class="px-4 py-3">Alamat Kos</th>
-                    <th class="px-4 py-3">Pemilik Kos</th>
-                    <th class="px-4 py-3">Status Kos</th>
-                    <th class="px-4 py-3">Jenis Kos</th>
+                    <th class="px-4 py-3">Nama Pemilik</th>
+                    <th class="px-4 py-3">Alamat Pemilik</th>
+                    <th class="px-4 py-3">Nomor Telepon</th>
+                    <th class="px-4 py-3">Aksi</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
                 <tr class="hover:bg-gray-50 transition">
                     <td class="px-4 py-3">1</td>
-                    <td class="px-4 py-3">Kos Sejahtera</td>
-                    <td class="px-4 py-3">Jl. Contoh No. 123</td>
-                    <td class="px-4 py-3">Budi Santoso</td>
-                    <td class="px-4 py-3">
-                        <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-700">
-                            Aktif
-                        </span>
-                    </td>
-                    <td class="px-4 py-3">Campur</td>
+                    <td class="px-4 py-3">brian</td>
+                    <td class="px-4 py-3">Puncu</td>
+                    <td class="px-4 py-3">08103432</td>
+                    <td class="px-4 py-3"></td>
                 </tr>
                 <tr class="hover:bg-gray-50 transition">
-                    <td class="px-4 py-3">2</td>
-                    <td class="px-4 py-3">Kos Putri Idaman</td>
-                    <td class="px-4 py-3">Jl. Mawar No. 45</td>
-                    <td class="px-4 py-3">Siti Aminah</td>
-                    <td class="px-4 py-3">
-                        <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-700">
-                            Aktif
-                        </span>
-                    </td>
-                    <td class="px-4 py-3">Putri</td>
+                    <td class="px-4 py-3">1</td>
+                    <td class="px-4 py-3">brian</td>
+                    <td class="px-4 py-3">Puncu</td>
+                    <td class="px-4 py-3">08103432</td>
+                    <td class="px-4 py-3"></td>
                 </tr>
             </tbody>
         </table>

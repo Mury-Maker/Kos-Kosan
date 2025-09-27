@@ -16,7 +16,7 @@
 <body class="bg-[#FFFCFC]">
 
     {{-- Sidebar & Navbar --}}
-    @include('admin.navigation')
+    @include('navigation')
 
     <!-- Main content -->
     <main id="mainContent" class="p-6 ml-72 transition-all duration-300">
