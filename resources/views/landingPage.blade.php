@@ -5,21 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bilah Navigasi Kustom</title>
     <script src="https://cdn.tailwindcss.com"></script>
-<<<<<<< HEAD
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-=======
->>>>>>> 396046c697c41ec3448bc8226db3a027277781cf
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body class="bg-[#FFFCFC] font-sans m-0">
 
 <nav class="bg-[#FFFCFC] px-8 h-20 flex justify-between items-center shadow-md">
     <div class="flex items-center">
-<<<<<<< HEAD
         <img src="img/logosuko.svg" alt="Logo" class="h-12 w-auto">
-=======
-        <img src="img/logo sukorame berdaya 2025.png" alt="Logo" class="h-12 w-auto">
->>>>>>> 396046c697c41ec3448bc8226db3a027277781cf
     </div>
 
     <ul class="flex list-none m-0 p-0">
@@ -41,11 +34,8 @@
 </nav>
 
 <div class="p-8 text-center mt-20">
-<<<<<<< HEAD
     <h1 class="text-5xl font-bold mb-4 textprim">
-=======
     <h1 class="text-5xl font-bold mb-4">
->>>>>>> 396046c697c41ec3448bc8226db3a027277781cf
         Data Kos-Kosan yang telah<br>
         <span class="block mt-8">
             terdaftar di <span class="text-[#704E98]">Kelurahan Sukorame</span>
@@ -53,7 +43,6 @@
     </h1>
     <p class="text-gray-700 mt-8">Sistem informasi ini memuat hasil pendataan resmi Kelurahan Sukorame untuk memudahkan<br> warga dan pendatang dalam menemukan informasi kost terdaftar</p>
     <div class="justify-center mt-14">
-<<<<<<< HEAD
             <a href="#" class="bg-[#704E98] text-white font-medium py-3 px-6 rounded-full ">Lihat Daftar  <img src="img/btnpanah.svg" class="ml-1 w-[14px] inline"></a>
             <a href="#" class="bg-white text-[#704E98] font-medium py-3 px-6 rounded-full border-2 border-[#704E98] ">Tentang Kami <img src="img/tentang.svg" class="ml-1 w-[22px] inline"></a>
     </div>
@@ -84,18 +73,18 @@
 
 <!-- kos -->
 <div class="p-8 py-12 grid grid-cols-12 gap-6 items-start bg-[#F8F1FF]">
-  
+
   <!-- kiri -->
   <div class="col-span-6">
     <div class="font-semibold">
       <div class="text-4xl textprim">
-        Lihat semua Kos-kosan yang aktif di 
+        Lihat semua Kos-kosan yang aktif di
         <span class="text-5xl text-[#704E98]">Kelurahan Sukorame</span>
       </div>
     </div>
     <a href="#"
        class="mt-6 inline-flex items-center text-[#704E98] border border-[#704E98] font-medium py-2 px-5 rounded-full hover:bg-[#704E98] hover:text-white transition">
-      Lihat Selengkapnya 
+      Lihat Selengkapnya
       <span class="ml-2">→</span>
     </a>
   </div>
@@ -141,16 +130,16 @@
     <p class="text-[#555555]">Sistem informasi ini menampilkan lokasi kost di Kelurahan Sukarame untuk membantu pendataan resmi sekaligus memudahkan masyarakat dan pendatang memperoleh informasi kos terdaftar.</p>
     <a href="#"
        class="mt-6 inline-flex items-center text-[#704E98] border border-[#704E98] font-medium py-2 px-5 rounded-full hover:bg-[#704E98] hover:text-white transition">
-      Cek Lokasi 
+      Cek Lokasi
       <span class="ml-2">→</span>
-    </a> 
+    </a>
   </div>
 </div>
 <!-- lokasi -->
 
 <!-- ke;ebihan -->
 <div class="p-8 my-8 px-12 py-12">
-  <div class="text-5xl primwar font-semibold text-center">Kelebihan <span class="textprim">Sistem</span></div> 
+  <div class="text-5xl primwar font-semibold text-center">Kelebihan <span class="textprim">Sistem</span></div>
   <!-- kelebihan -->
   <div class="bg-[#F8F1FF] mt-8 p-16 rounded-2xl text-[#444444]">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -266,20 +255,5 @@
 </footer>
 <!-- footer -->
 
-=======
-        <a href="#" class="bg-[#704E98] text-white font-medium py-3 px-6 rounded-full ">Lihat Daftar <i class="fas fa-circle"></i></a>
-        <a href="#" class="bg-white text-[#704E98] font-medium py-3 px-6 rounded-full border-2 border-[#704E98]">Tentang Kami <i class="fas fa-circle"></i></a>
-    </div>
-</div>
-<div class="mt-8 px-12 justify-between items-center flex border-y h-[150px] border-gray-300 bg-[#B592D2]">
-    <p>Cek dan daftarkan Kos secara <br>
-        resmi ke Kelurahan Sukorame</p>
-    <div class="flex justify-center items-center flex text-6xl font-bold text-white gap-8">
-        <h1>10+</h1>
-        <h1>5+</h1>
-    </div>
-    <img src="img/logo_sukorame_putih.png" class="h-12 w-auto">
-</div>
->>>>>>> 396046c697c41ec3448bc8226db3a027277781cf
 </body>
 </html>
