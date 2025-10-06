@@ -6,6 +6,7 @@
     <title>Masuk - Admin & Pemilik Kos</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<<<<<<< HEAD
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body class="bg-[#F8F1FF] min-h-screen flex flex-col items-center justify-center font-sans">
@@ -17,6 +18,18 @@
                 <img src="{{ asset('img/logo.svg') }}" alt="Logo Sukorame" class="h-16 w-auto mx-auto mb-8">
                 <h2 class="text-3xl font-bold textprim">Masuk Ke Sistem</h2>
                 <p class="textsekon text-sm mt-1">Daftarkan kos secara resmi dan dapatkan akun<br>melalui kelurahan</p>
+=======
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-center font-sans">
+
+    {{-- Container Utama Login --}}
+    <div class="w-[520px] h-[592px] max-w-md my-[76px]">
+        <div class="bg-white p-8 rounded-xl shadow-2xl border border-gray-200">
+            <div class="text-center mb-6">
+                <img src="{{ asset('img/logo sukorame berdaya 2025.png') }}" alt="Logo Sukorame" class="h-16 w-auto mx-auto mb-4">
+                <h2 class="text-3xl font-bold text-gray-800">Masuk Ke Sistem</h2>
+                <p class="text-gray-500 text-sm mt-1">Daftarkan kos secara resmi dan dapatkan akun<br>melalui kelurahan</p>
+>>>>>>> 396046c697c41ec3448bc8226db3a027277781cf
             </div>
 
             {{-- Pesan Error Validasi Global --}}
@@ -30,6 +43,7 @@
                 @csrf
 
                 <div class="mb-4">
+<<<<<<< HEAD
                     <label for="email" class="block text-sm font-medium textprim mb-2">Email</label>
                     <input type="email" id="email" name="email" value="{{ old('email') }}" required autofocus
                            class="w-full px-4 py-2 border border-gray-300 rounded-full px-3 py-2 focus:border-[#704E98] focus:ring-[#704E98] focus:ring-0.5 focus:outline-none @error('email') border-red-500 @enderror"
@@ -50,6 +64,20 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
                     </button>
+=======
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                    <input type="email" id="email" name="email" value="{{ old('email') }}" required autofocus
+                           class="w-full px-4 py-2 border rounded-full focus:ring-[#704E98] focus:border-[#704E98] @error('email') border-red-500 @enderror"
+                           placeholder="Masukkan email Anda">
+                </div>
+
+                <div class="mb-6">
+                    <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Kata Sandi</label>
+                    <input type="password" id="password" name="password" required
+                           {{-- PERBAIKAN: Menambahkan error styling untuk kolom password --}}
+                           class="w-full px-4 py-2 border rounded-full focus:ring-[#704E98] focus:border-[#704E98] @error('password') border-red-500 @enderror"
+                           placeholder="Masukkan kata sandi">
+>>>>>>> 396046c697c41ec3448bc8226db3a027277781cf
                     @error('password')
                         <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
                     @enderror
@@ -62,6 +90,7 @@
 
             </form>
 
+<<<<<<< HEAD
             <!-- js mata -->
             <script>
                 const togglePassword = document.querySelector("#togglePassword");
@@ -81,6 +110,10 @@
 
             <div class="mt-6 text-center text-sm">
                 <p class="textsekon">Lupa kata sandi?
+=======
+            <div class="mt-6 text-center text-sm">
+                <p class="text-gray-600">Lupa kata sandi?
+>>>>>>> 396046c697c41ec3448bc8226db3a027277781cf
                     <a href="#" class="text-[#704E98] hover:underline">Reset di sini</a>
                 </p>
             </div>

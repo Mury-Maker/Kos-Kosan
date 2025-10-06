@@ -18,9 +18,12 @@ Route::post('/login', [AuthController::class, 'login']);
 // Proses logout (Hanya bisa diakses jika sudah login)
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
+<<<<<<< HEAD
 Route::get('/halo', function () {
     return view('login');
 });
+=======
+>>>>>>> 396046c697c41ec3448bc8226db3a027277781cf
 
 /* |--------------------------------------------------------------------------
 | ROUTES UNTUK HALAMAN DEPAN (Publik)
