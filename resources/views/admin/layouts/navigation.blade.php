@@ -4,7 +4,7 @@
         <div class="logo flex justify-between items-center mb-4 ml-1 border-b border-white-700 pb-4">
             <!-- Logo di sidebar -->
             <a href="#" class="flex items-center sidebar-logo">
-                <img src="{{ asset('img/logo_sukorame_putih.png') }}" alt="Logo" class="h-12 w-auto">
+                <img src="{{ asset('img/logoputih.svg') }}" alt="Logo" class="h-12 w-auto">
             </a>
             <!-- Tombol khusus sidebar -->
             <button id="sidebarToggle" class="p-2 text-gray-700 text-2xl rounded-md hover:bg-[#8B70AC] dark:text-gray-300 hover:bg-[#8B70AC]">
@@ -51,13 +51,13 @@
     <div class="flex items-center ">
         <!-- Logo di header -->
         <a href="#" class="flex items-center header-logo hidden">
-            <img src="img/logo sukorame berdaya 2025.png" alt="Logo" class="h-10 w-auto">
+            <img src="{{ asset('img/logosuko.svg') }}" alt="Logo" class="h-10 w-auto">
         </a>
     </div>
 
     <nav class="navbar-nav flex items-center">
         <a href="#" class="notification mr-4 p-2 text-gray-700">
-            <img src="img/icon_notif.png" class=" w-8 h-8">
+            <img src="{{ asset('img/icon_notif.png') }}" class=" w-8 h-8">
         </a>
     </nav>
 </header>
