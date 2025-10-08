@@ -1,9 +1,10 @@
 <h1>cara upload ke github
-    step 1 -> git branch nama_branch
-    step 2 -> git checkout nama_branch
-    step 3 -> git add .
-    step 4 -> git commit -m "deskripsi"
-    step 4 -> git push origin nama_branch </h1>
+    step 1 -> git branch nama_branch <br>
+    step 2 -> git checkout nama_branch <br>
+    step 3 -> git add . <br>
+    step 4 -> git commit -m "deskripsi" <br>
+    step 4 -> git push origin nama_branch <br>
+</h1> 
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
