@@ -4,6 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController; // Asumsi Anda akan membuat AdminController
 
+
+// Route Awal (Root, biasanya diarahkan ke landing page atau login jika belum login)
+Route::get('/', function () {
+    return redirect()->route('landingPage');
+});
+
 /* |--------------------------------------------------------------------------
 | ROUTES AUTENTIKASI (Login & Logout)
 |--------------------------------------------------------------------------
@@ -49,6 +55,12 @@ Route::get('/tentang', function () {
 // Grup route yang memerlukan autentikasi
 Route::middleware(['auth'])->prefix('admin')->group(function () {
 
+    // Route Root setelah login, arahkan ke dashboard admin
+    Route::get('/', function () {
+        return redirect()->route('admin.dashboard');
+    });
+
+
     // Dashboard (Arahkan ke sini setelah login sukses)
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
@@ -87,14 +99,22 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
         return view('admin.form.formKelolaUser');
     })->name('admin.form_kelola_user');
 
+});
+
+
+
+Route::middleware(['auth'])->prefix('owner')->group(function () {
 
     // Route Root setelah login, arahkan ke dashboard admin
     Route::get('/', function () {
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('owner.dashboard');
     });
-});
 
-// Route Awal (Root, biasanya diarahkan ke landing page atau login jika belum login)
-Route::get('/', function () {
-    return redirect()->route('landingPage');
+
+    // Dashboard (Arahkan ke sini setelah login sukses)
+    Route::get('/dashboard', function () {
+        return view('owner.dashboard');
+    })->name('owner.dashboard');
+
+
 });
