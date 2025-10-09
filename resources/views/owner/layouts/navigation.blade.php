@@ -15,31 +15,31 @@
 
         <ul class="space-y-2">
             <li>
-                <a href="{{ route('admin.dashboard') }}" class="flex items-center p-3 text-gray-300 hover:bg-[#8B70AC] rounded-lg transition">
+                <a href="{{ route('owner.dashboard') }}" class="flex items-center p-3 text-gray-300 hover:bg-[#8B70AC] rounded-lg transition">
                     <i data-feather="home" class="w-5 h-5"></i>
                     <span class="ml-3 sidebar-text">Dashboard</span>
                 </a>
             </li>
             <li>
-                <a href="/admin/kelola_Pemilik_Kos" class="flex items-center p-3 text-gray-300 hover:bg-[#8B70AC] rounded-lg transition">
+                <a href="/owner/kelola_Pemilik_Kos" class="flex items-center p-3 text-gray-300 hover:bg-[#8B70AC] rounded-lg transition">
                     <i data-feather="grid" class="w-5 h-5"></i>
                     <span class="ml-3 sidebar-text">Kelola Pemilik Kos</span>
                 </a>
             </li>
             <li>
-                <a href="/admin/kelola_User" class="flex items-center p-3 text-gray-300 hover:bg-[#8B70AC] rounded-lg transition">
+                <a href="/owner/kelola_User" class="flex items-center p-3 text-gray-300 hover:bg-[#8B70AC] rounded-lg transition">
                     <i data-feather="grid" class="w-5 h-5"></i>
                     <span class="ml-3 sidebar-text">Kelola User</span>
                 </a>
             </li>
             <li>
-                <a href="/admin/kelola_Data_Kos" class="flex items-center p-3 text-gray-300 hover:bg-[#8B70AC] rounded-lg transition">
+                <a href="/owner/kelola_Data_Kos" class="flex items-center p-3 text-gray-300 hover:bg-[#8B70AC] rounded-lg transition">
                     <i data-feather="grid" class="w-5 h-5"></i>
                     <span class="ml-3 sidebar-text">Kelola Data Kos</span>
                 </a>
             </li>
             <li>
-                <a href="/admin/kelola_fasilitas" class="flex items-center p-3 text-gray-300 hover:bg-[#8B70AC] rounded-lg transition">
+                <a href="/owner/kelola_fasilitas" class="flex items-center p-3 text-gray-300 hover:bg-[#8B70AC] rounded-lg transition">
                     <i data-feather="grid" class="w-5 h-5"></i>
                     <span class="ml-3 sidebar-text">Kelola Fasilitas</span>
                 </a>
@@ -80,7 +80,7 @@
 <nav class="flex ml-72 px-4 py-3 text-gray-600 text-sm bg-gray-50 dark:bg-gray-800 border-b transition-all duration-300" aria-label="Breadcrumb">
     <ol class="inline-flex items-center space-x-1 md:space-x-3">
         <li class="inline-flex items-center">
-            <a href="{{ route('admin.dashboard') }}" class="inline-flex items-center text-gray-500 hover:text-[#8B70AC]">
+            <a href="{{ route('owner.dashboard') }}" class="inline-flex items-center text-gray-500 hover:text-[#8B70AC]">
                 <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M10 2L2 8h3v8h10V8h3L10 2z" />
                 </svg>
@@ -92,7 +92,7 @@
                 <svg class="w-4 h-4 text-gray-400 mx-2" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M7 10l5 5V5l-5 5z" />
                 </svg>
-                <a href="/admin/kelola_Data_Kos" class="ml-1 text-gray-500 hover:text-[#8B70AC] md:ml-2">Kelola Data Kos</a>
+                <a href="/owner/kelola_Data_Kos" class="ml-1 text-gray-500 hover:text-[#8B70AC] md:ml-2">Kelola Data Kos</a>
             </div>
         </li>
     </ol>
