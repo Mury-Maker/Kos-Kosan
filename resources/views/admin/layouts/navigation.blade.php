@@ -51,7 +51,7 @@
     <div class="flex items-center ">
         <!-- Logo di header -->
         <a href="#" class="flex items-center header-logo hidden">
-            <img src="{{ asset('img/logosuko.svg') }}" alt="Logo" class="h-10 w-auto">
+            <img src="{{ asset('img/logosuko.svg') }}" alt="Logo" class="h-12 w-auto">
         </a>
     </div>
 
