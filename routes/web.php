@@ -27,10 +27,18 @@ Route::get('/halo', function () {
 | ROUTES UNTUK HALAMAN DEPAN (Publik)
 |--------------------------------------------------------------------------
 */
-
 Route::get('/landingPage', function () {
-    return view('landingPage'); // Halaman landing page publik
+    return view('guest.landingPage'); // Halaman daftar kos publik
 })->name('landingPage');
+
+Route::get('/daftarKos', function () {
+    return view('guest.daftarKos'); // Halaman daftar kos publik
+})->name('daftarKos');
+
+Route::get('/tentang', function () {
+    return view('guest.tentang'); // Halaman daftar kos publik
+})->name('tentang');
+
 
 
 /* |--------------------------------------------------------------------------

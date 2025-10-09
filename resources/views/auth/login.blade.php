@@ -13,10 +13,10 @@
     {{-- Container Utama Login --}}
     <div class="w-[520px] h-[592px] max-w-md my-[76px]">
         <div class="bg-white p-8 rounded-xl shadow-xl border border-gray-200">
-            <div class="text-center mb-6">
+            <div class="">
                 <img src="{{ asset('img/logo.svg') }}" alt="Logo Sukorame" class="h-16 w-auto mx-auto mb-8">
-                <h2 class="text-3xl font-bold textprim">Masuk Ke Sistem</h2>
-                <p class="textsekon text-sm mt-1">Daftarkan kos secara resmi dan dapatkan akun<br>melalui kelurahan</p>
+                <h2 class="text-center text-3xl font-bold textprim">Masuk Ke Sistem</h2>
+                <p class="textsekon text-center text-sm mt-1">Daftarkan kos secara resmi dan dapatkan akun<br>melalui kelurahan</p>
 
             {{-- Pesan Error Validasi Global --}}
             @error('email')
@@ -78,18 +78,16 @@
             <!-- js mata -->
 
             <div class="mt-6 text-center text-sm">
-                <p class="textsekon">Lupa kata sandi?
-            <div class="mt-6 text-center text-sm">
                 <p class="text-gray-600">Lupa kata sandi?
                     <a href="#" class="text-[#704E98] hover:underline">Reset di sini</a>
                 </p>
             </div>
         </div>
-        {{-- PERBAIKAN: Footer diletakkan di dalam body dan diberi styling --}}
-        <footer class="mt-8 mb-4 text-center text-[#555555] text-xs w-full">
-            <p>© 2025 Kelurahan Sukorame. Sistem Informasi Pendataan Kos</p>
-        </footer>
     </div>
+    {{-- PERBAIKAN: Footer diletakkan di dalam body dan diberi styling --}}
+    <footer class="mt-8 mb-4 text-center text-[#555555] text-sm w-full">
+        <p>© 2025 Kelurahan Sukorame. Sistem Informasi Pendataan Kos</p>
+    </footer>
 
 </body>
 </html>
