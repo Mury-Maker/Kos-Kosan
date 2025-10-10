@@ -37,3 +37,112 @@
 .textsekon {
     color: #555555;
 }
+
+.textmati {
+    color:#999999;
+}
+
+.bgsekon {
+    background-color: #F8F1FF;
+}
+/* judul */
+.se1judul {
+    color: #999999;
+    font-size: 32px;
+    font-weight: 600;
+}
+.primjudul {
+    font-size: 48px;
+    font-weight: 600;
+}
+
+/* akhir judul */
+
+/* efek navbar */
+.cahaya:hover {
+  color: #704E98;
+  text-shadow: 0 0 1px #BFA2E1;
+  transition: all 0.3s ease;
+}
+/* akhir efek navbar */
+
+
+/* card */
+.card {
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100%;
+  max-width: 300px; 
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(112, 78, 152, 0.2);
+}
+
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.card-content {
+  padding: 12px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.card-header h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.tagcwe {
+  background-color: #FFEFE0;
+  color: #FB923C;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-weight: 500;
+}
+.tagcwo {
+  background-color: #DDECFF;
+  color: #1D91FF;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-weight: 500;
+}
+.tagbeb {
+  background-color: #D7F5E6;
+  color: #1ABC9C;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-weight: 500;
+}
+
+.location {
+  color: #6B7280;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+}
+
+.location i {
+  color: #704E98;
+  margin-right: 6px;
+}
+
+/* akhir card */

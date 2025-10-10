@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="p-8 text-center mt-20">
-    <h1 class="text-5xl font-bold mb-4">
+    <h1 class="text-5xl textprim font-bold mb-4">
         Data Kos-Kosan yang telah<br>
         <span class="block mt-8">
             terdaftar di <span class="text-[#704E98]">Kelurahan Sukorame</span>
@@ -41,7 +41,7 @@
     <img src="img/logoputih.svg" class="h-12 w-auto">
 </div>
 
-<div class="p-8 py-12 grid grid-cols-12 gap-6 items-start bg-[#F8F1FF]">
+<div class="px-12 py-20 grid grid-cols-12 gap-6 items-start bg-[#F8F1FF]">
     <div class="col-span-6">
         <div class="font-semibold">
             <div class="text-4xl textprim">
@@ -82,13 +82,15 @@
         </div>
     </div>
 </div>
-<div class="p-8 px-12 my-8 py-12 grid grid-cols-12 gap-6 items-start items-center">
+
+<!-- lokasi -->
+<div class="px-12 mt-20 py-12 grid grid-cols-12 gap-6 items-start items-center">
     <div class="col-span-6">
         <img src="img/lokasi.svg" alt="Lokasi" class="h-auto w-auto">
     </div>
     <div class="col-span-6 px-8 ">
         <h3 class="font-semibold text-5xl text-[#444444] pb-6">Kos tersebar di Kelurahan Sukorame</h3>
-        <p class="text-[#555555]">Sistem informasi ini menampilkan lokasi kost di Kelurahan Sukarame untuk membantu pendataan resmi sekaligus memudahkan masyarakat dan pendatang memperoleh informasi kos terdaftar.</p>
+        <p class="textsekon w-[500px]">Sistem informasi ini menampilkan lokasi kost di Kelurahan Sukarame untuk membantu pendataan resmi sekaligus memudahkan masyarakat dan pendatang memperoleh informasi kos terdaftar.</p>
         <a href="#"
            class="mt-6 inline-flex items-center text-[#704E98] border border-[#704E98] font-medium py-2 px-5 rounded-full hover:bg-[#704E98] hover:text-white transition">
             Cek Lokasi
@@ -96,7 +98,10 @@
         </a>
     </div>
 </div>
-<div class="p-8 my-8 px-12 py-12">
+<!-- lokasi -->
+
+<!-- kelebihan -->
+<div class="px-12 mt-20 mb-20">
     <div class="text-5xl primwar font-semibold text-center">Kelebihan <span class="textprim">Sistem</span></div>
     <div class="bg-[#F8F1FF] mt-8 p-16 rounded-2xl text-[#444444]">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -153,5 +158,5 @@
             </div>
         </div>
     </div>
-    </div>
+</div>
 @endsection
