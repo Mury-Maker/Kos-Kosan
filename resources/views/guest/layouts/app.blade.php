@@ -8,6 +8,12 @@
     {{-- Asumsi Anda menggunakan Laravel/template engine lain --}}
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    @yield('styles') {{-- TAMBAHAN: Tempat CSS Khusus (untuk Leaflet CSS) --}}
+
 </head>
 <body class="bg-[#FFFCFC] font-sans m-0">
 
@@ -21,6 +27,10 @@
     </main>
 
     @include('guest.layouts.footer')
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    @yield('scripts')
 
     </body>
 </html>

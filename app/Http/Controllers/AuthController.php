@@ -8,17 +8,29 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
-    // Menampilkan halaman login
+    /**
+     * Menampilkan halaman login.
+     * Mengarahkan pengguna yang sudah login ke dashboard yang sesuai.
+     */
     public function showLoginForm()
     {
-        // Jika pengguna sudah login, arahkan ke dashboard
         if (Auth::check()) {
-            return redirect('/admin/dashboard');
+            $user = Auth::user();
+
+            // Mengarahkan berdasarkan role jika sudah login
+            if ($user->role === 'admin') {
+                return redirect()->intended('/admin/dashboard');
+            } elseif ($user->role === 'pemilik') {
+                return redirect()->intended('/owner/dashboard');
+            }
         }
+        // Jika belum login, tampilkan form
         return view('auth.login');
     }
 
-    // Menangani proses login
+    /**
+     * Menangani proses login.
+     */
     public function login(Request $request)
     {
         // 1. Validasi Input
@@ -31,12 +43,11 @@ class AuthController extends Controller
             'password.required' => 'Kolom kata sandi wajib diisi.',
         ]);
 
-        // 2. Coba Proses Autentikasi
-        // Cek kredensial dan status akun
+        // 2. Proses Autentikasi
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
 
-            // Cek Status Akun (dari rancangan tabel kita)
+            // Cek Status Akun: Harus 'active'
             if ($user->status_akun !== 'active') {
                 Auth::logout();
                 throw ValidationException::withMessages([
@@ -44,25 +55,36 @@ class AuthController extends Controller
                 ]);
             }
 
-            // Cek Role (hanya Admin/Pemilik yang boleh login ke dashboard)
-            if ($user->role == 'admin' || $user->role == 'pemilik') {
-                $request->session()->regenerate();
+            // Arahkan sesuai Role
+            $request->session()->regenerate();
+
+            if ($user->role === 'admin') {
                 return redirect()->intended('/admin/dashboard');
+            } elseif ($user->role === 'pemilik') {
+                return redirect()->intended('/owner/dashboard');
+            } else {
+                // Peran tidak dikenal (fallback safety)
+                Auth::logout();
+                throw ValidationException::withMessages([
+                    'email' => ['Peran pengguna tidak dikenali.'],
+                ]);
             }
         }
 
-        // 3. Jika Autentikasi Gagal
+        // 3. Jika gagal login (kredensial salah)
         throw ValidationException::withMessages([
             'email' => ['Kredensial yang diberikan tidak cocok dengan data kami.'],
         ]);
     }
 
-    // Menangani proses logout
+    /**
+     * Proses logout.
+     */
     public function logout(Request $request)
     {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/login');
+        return redirect('/');
     }
 }

@@ -15,7 +15,7 @@ return new class extends Migration
             // Foreign Key ke tabel_pemilik
             $table->foreignId('id_pemilik')->constrained('tabel_pemilik', 'id_pemilik')->onDelete('cascade');
 
-            $table->enum('tipe_kos', ['putra', 'putri', 'campuran']);
+            $table->enum('tipe_kos', ['putra', 'putri', 'bebas']);
             $table->string('alamat_lengkap', 255);
             $table->text('deskripsi_kos')->nullable();
 

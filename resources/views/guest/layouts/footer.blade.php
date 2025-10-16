@@ -24,15 +24,59 @@
             </div>
         </div>
 
-        <!-- Lokasi -->
+        <!-- Map -->
         <div class="col-span-1">
             <h3 class="font-semibold text-lg mb-3">Lokasi</h3>
-            <img src="{{ asset('img/lokasi.svg') }}" alt="Peta Lokasi" class="w-48 h-48 object-cover rounded-md">
+            {{-- Div untuk Peta, menggunakan class lebar & tinggi asli (w-48 h-48) --}}
+            <div id="map-footer" class="w-64 h-48 rounded-md"></div>
         </div>
     </div>
 
-    <hr class="border-white/30 my-8">
-    <p class="text-center text-sm">
-        © 2025 Kelurahan Sukorame. Sistem Informasi Pendataan Kos
-    </p>
+    <hr class="border-white/30 my-8">
+    <p class="text-center text-sm">
+        © 2025 Kelurahan Sukorame. Sistem Informasi Pendataan Kos
+    </p>
+
+    {{-- SCRIPT INISIALISASI PETA FOOTER --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sukorameLat = -7.8054208;
+            const sukorameLng = 111.9805677;
+
+
+            // Cek apakah Leaflet sudah dimuat dan elemen peta ada
+            if (document.getElementById('map-footer') && typeof L !== 'undefined') {
+                const mapFooter = L.map('map-footer', {
+                    // Mengaktifkan kembali kontrol zoom dan interaksi
+                    zoomControl: true,
+                    scrollWheelZoom: true,
+                    dragging: true,
+                    tap: true
+                }).setView([sukorameLat, sukorameLng], 14);
+
+                // Tambahkan layer OpenStreetMap
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors',
+                    maxZoom: 18,
+                    minZoom: 12,
+                }).addTo(mapFooter);
+
+                // TAMBAHKAN GARIS BATAS (POLIGON PERKIRAAN)
+                L.polygon(boundaryCoords, {
+                    color: '#704E98',        // Warna Ungu
+                    weight: 3,               // Ketebalan Garis
+                    fillColor: '#704E98',    // Warna Isi Poligon
+                }).addTo(mapFooter)
+                  .bindPopup("Area Kelurahan Sukorame (Perkiraan)");
+
+                // Atur zoom agar sesuai dengan batas poligon
+                mapFooter.fitBounds(boundaryCoords);
+
+                // Memperbaiki rendering peta setelah elemen diukur
+                setTimeout(function() {
+                    mapFooter.invalidateSize();
+                }, 100);
+            }
+        });
+    </script>
 </footer>

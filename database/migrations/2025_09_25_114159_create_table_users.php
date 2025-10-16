@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('password');
 
             // Kolom Tambahan
-            $table->enum('role', ['admin', 'owner'])->default('owner');
+            $table->enum('role', ['admin', 'pemilik'])->default('pemilik');
 
             // Foreign Key ke tabel_pemilik, diizinkan NULL untuk akun Admin
             $table->foreignId('id_pemilik')
