@@ -3,135 +3,128 @@
 @section('title', 'Dashboard Owner')
 
 @section('content')
+
 {{-- Title --}}
 <h2 class="text-2xl font-bold mb-6 ml-6">Dashboard</h2>
 
-{{-- card body --}}
-<div class="px-6">
+{{-- Card Statistik --}}
+<div class="px-6 mb-8">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-        <!-- Card 1 -->
-        <a href="#pembaruan"
-           class="block bg-white rounded-2xl shadow-md p-6 hover:shadow-xl hover:bg-gray-50 transition">
-            <h3 class="flex items-center gap-2 text-lg font-semibold text-[#1ABC9C]">
-                <img src="{{ asset('img/diagram.png') }}" alt="" class="w-5 h-5">
-                Pembaruan
+        <!-- Pembaruan -->
+        <div class="bg-white rounded-xl shadow-md p-5 border-l-4 border-[#1ABC9C]">
+            <h3 class="text-[#1ABC9C] font-semibold text-lg flex items-center gap-2">
+                <i class="fas fa-sync-alt"></i> Pembaruan
             </h3>
-            <div class="flex items-end justify-between mt-3 mb-2">
-                <div class="flex items-baseline gap-1 ">
-                    <h1 class="text-6xl font-bold text-[#1ABC9C]">5</h1>
-                    <p class="text-gray-500">data</p>
-                </div>
-                <i class="fa-solid fa-arrow-up text-[#1ABC9C]"></i>
+            <div class="flex items-end justify-between mt-3">
+                <h1 class="text-5xl font-bold text-[#1ABC9C]">5</h1>
+                <p class="text-gray-500">data</p>
             </div>
-        </a>
-        <!-- Card 2 -->
-        <a href="#pembaruan"
-           class="block bg-white rounded-2xl shadow-md p-6 hover:shadow-xl hover:bg-gray-50 transition">
-            <h3 class="flex items-center gap-2 text-lg font-semibold text-[#FFA700]">
-                <img src="{{ asset('img/diagram.png') }}" alt="" class="w-5 h-5">
-                Kos Terdaftar
+        </div>
+
+        <!-- Total Kamar -->
+        <div class="bg-white rounded-xl shadow-md p-5 border-l-4 border-[#FFA700]">
+            <h3 class="text-[#FFA700] font-semibold text-lg flex items-center gap-2">
+                <i class="fas fa-door-closed"></i> Total Kamar
             </h3>
-            <div class="flex items-end justify-between mt-3 mb-2">
-                <div class="flex items-baseline gap-1 ">
-                    <h1 class="text-6xl font-bold text-[#FFA700]">25</h1>
-                    <p class="text-gray-500">data</p>
-                </div>
-                <i class="fa-solid fa-arrow-up text-[#FFA700]"></i>
+            <div class="flex items-end justify-between mt-3">
+                <h1 class="text-5xl font-bold text-[#FFA700]">15</h1>
+                <p class="text-gray-500">kamar</p>
             </div>
-        </a>
-        <!-- Card 3 -->
-        <a href="#pembaruan"
-           class="block bg-white rounded-2xl shadow-md p-6 hover:shadow-xl hover:bg-gray-50 transition">
-            <h3 class="flex items-center gap-2 text-lg font-semibold text-[#1D91FF]">
-                <img src="{{ asset('img/diagram.png') }}" alt="" class="w-5 h-5">
-                Kos Laki-laki
+        </div>
+
+        <!-- Kamar Terpakai -->
+        <div class="bg-white rounded-xl shadow-md p-5 border-l-4 border-[#F96464]">
+            <h3 class="text-[#F96464] font-semibold text-lg flex items-center gap-2">
+                <i class="fas fa-bed"></i> Kamar Terpakai
             </h3>
-            <div class="flex items-end justify-between mt-3 mb-2">
-                <div class="flex items-baseline gap-1 ">
-                    <h1 class="text-6xl font-bold text-[#1D91FF]">18</h1>
-                    <p class="text-gray-500">data</p>
-                </div>
-                <i class="fa-solid fa-arrow-up text-[#1D91FF]"></i>
+            <div class="flex items-end justify-between mt-3">
+                <h1 class="text-5xl font-bold text-[#F96464]">13</h1>
+                <p class="text-gray-500">kamar</p>
             </div>
-        </a>
-        <!-- Card 3 -->
-        <a href="#pembaruan"
-           class="block bg-white rounded-2xl shadow-md p-6 hover:shadow-xl hover:bg-gray-50 transition">
-            <h3 class="flex items-center gap-2 text-lg font-semibold text-[#F96464]">
-                <img src="{{ asset('img/diagram.png') }}" alt="" class="w-5 h-5">
-                Kos Perempuan
+        </div>
+
+        <!-- Kamar Tersedia -->
+        <div class="bg-white rounded-xl shadow-md p-5 border-l-4 border-[#1D91FF]">
+            <h3 class="text-[#1D91FF] font-semibold text-lg flex items-center gap-2">
+                <i class="fas fa-door-open"></i> Kamar Tersedia
             </h3>
-            <div class="flex items-end justify-between mt-3 mb-2">
-                <div class="flex items-baseline gap-1 ">
-                    <h1 class="text-6xl font-bold text-[#F96464]">2</h1>
-                    <p class="text-gray-500">data</p>
-                </div>
-                <i class="fa-solid fa-arrow-up text-[#F96464]"></i>
+            <div class="flex items-end justify-between mt-3">
+                <h1 class="text-5xl font-bold text-[#1D91FF]">2</h1>
+                <p class="text-gray-500">kamar</p>
             </div>
-        </a>
-        <!-- Card 5 -->
-        <a href="#pembaruan"
-           class="block bg-white rounded-2xl shadow-md p-6 hover:shadow-xl hover:bg-gray-50 transition">
-            <h3 class="flex items-center gap-2 text-lg font-semibold text-[#800080]">
-                <img src="{{ asset('img/diagram.png') }}" alt="" class="w-5 h-5">
-                Kos Bebas
+        </div>
+
+        <!-- Penghuni Kos -->
+        <div class="bg-white rounded-xl shadow-md p-5 border-l-4 border-[#800080]">
+            <h3 class="text-[#800080] font-semibold text-lg flex items-center gap-2">
+                <i class="fas fa-user-friends"></i> Penghuni Kos
             </h3>
-            <div class="flex items-end justify-between mt-3 mb-2">
-                <div class="flex items-baseline gap-1 ">
-                    <h1 class="text-6xl font-bold text-[#800080]">2</h1>
-                    <p class="text-gray-500">data</p>
-                </div>
-                <i class="fa-solid fa-arrow-up text-[#800080]"></i>
+            <div class="flex items-end justify-between mt-3">
+                <h1 class="text-5xl font-bold text-[#800080]">14</h1>
+                <p class="text-gray-500">orang</p>
             </div>
-        </a>
+        </div>
     </div>
 </div>
 
-{{-- data kos --}}
-<div class="data-kos mt-6 px-6 py-4 bg-white rounded-2xl shadow-md">
-    <div class="flex items-center justify-between mb-4">
-        <h3 class="text-lg font-semibold">Pendataan Kos</h3>
-        <div class="flex items-center">
-            <div class="relative w-full">
-                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                    <i class="fas fa-search text-gray-500"></i>
-                </div>
-                <input type="search" placeholder="Cari data..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#1ABC9C] focus:border-[#1ABC9C] text-gray-600 placeholder-gray-400" />
-            </div>
-            <button class="btn-filter ml-4 p-2 rounded-full hover:bg-gray-100 transition">
-                <img class="w-6 h-6" src="{{ asset('img/Vector.png') }}" alt="Filter">
-            </button>
-        </div>
-    </div>
-
+{{-- Data Kos --}}
+<div class="bg-white rounded-2xl shadow-md mx-6 p-6 mb-8">
+    <h2 class="text-2xl font-bold mb-4">Data Kos</h2>
     <div class="overflow-x-auto">
         <table class="w-full table-auto border-collapse">
-            <thead>
-                <tr class="bg-gray-100">
-                    <th class="px-4 py-2 text-left">No</th>
-                    <th class="px-4 py-2 text-left">Nama Kos</th>
-                    <th class="px-4 py-2 text-left">Alamat Kos</th>
-                    <th class="px-4 py-2 text-left">Pemilik Kos</th>
-                    <th class="px-4 py-2 text-left">Status Kos</th>
-                    <th class="px-4 py-2 text-left">Jenis Kos</th>
+            <thead class="bg-[#5D4B7A] text-white font-semibold">
+                <tr>
+                    <th class="px-4 py-2 text-left rounded-l-lg">No</th>
+                    <th class="px-4 py-2 text-left">Total Kamar</th>
+                    <th class="px-4 py-2 text-left">Kamar Terpakai</th>
+                    <th class="px-4 py-2 text-left">Kamar Tersedia</th>
+                    <th class="px-4 py-2 text-left">Jumlah Penghuni</th>
+                    <th class="px-4 py-2 text-center rounded-r-lg">Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td class="border px-4 py-2">1</td>
-                    <td class="border px-4 py-2">Kos Sejahtera</td>
-                    <td class="border px-4 py-2">Jl. Contoh No. 123</td>
-                    <td class="border px-4 py-2">Budi Santoso</td>
-                    <td class="border px-4 py-2">Aktif</td>
-                    <td class="border px-4 py-2">Campur</td>
+                <tr class="border-b hover:bg-gray-50">
+                    <td class="px-4 py-2">1</td>
+                    <td class="px-4 py-2">15</td>
+                    <td class="px-4 py-2">13</td>
+                    <td class="px-4 py-2">2</td>
+                    <td class="px-4 py-2">14</td>
+                    <td class="px-4 py-2 text-center">
+                        <button class="text-yellow-500 hover:text-yellow-600">
+                            <i class="fas fa-pen"></i>
+                        </button>
+                    </td>
                 </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{{-- Data Detail Kos --}}
+<div class="bg-white rounded-2xl shadow-md mx-6 p-6 mb-8">
+    <h2 class="text-2xl font-bold mb-4">Data Detail Kos</h2>
+    <div class="overflow-x-auto">
+        <table class="w-full table-auto border-collapse">
+            <thead class="bg-[#5D4B7A] text-white font-semibold">
                 <tr>
-                    <td class="border px-4 py-2">2</td>
-                    <td class="border px-4 py-2">Kos Putri Idaman</td>
-                    <td class="border px-4 py-2">Jl. Mawar No. 45</td>
-                    <td class="border px-4 py-2">Siti Aminah</td>
-                    <td class="border px-4 py-2">Aktif</td>
-                    <td class="border px-4 py-2">Putri</td>
+                    <th class="px-4 py-2 text-left rounded-l-lg">No</th>
+                    <th class="px-4 py-2 text-left">Nama Kos</th>
+                    <th class="px-4 py-2 text-left">Tipe Kos</th>
+                    <th class="px-4 py-2 text-left">Alamat Kos</th>
+                    <th class="px-4 py-2 text-left">No Telp</th>
+                    <th class="px-4 py-2 text-left">Harga Rentang</th>
+                    <th class="px-4 py-2 text-left rounded-r-lg">Fasilitas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="border-b hover:bg-gray-50">
+                    <td class="px-4 py-2">1</td>
+                    <td class="px-4 py-2">Kos Bu Rahmat</td>
+                    <td class="px-4 py-2">Kos Perempuan</td>
+                    <td class="px-4 py-2">Jl. Sukorame No. 10</td>
+                    <td class="px-4 py-2">085706037080</td>
+                    <td class="px-4 py-2">500.000 - 300.000</td>
+                    <td class="px-4 py-2">Kasur, Kipas, Lemari</td>
                 </tr>
             </tbody>
         </table>
