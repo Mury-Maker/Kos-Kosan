@@ -27,13 +27,13 @@
                 </a>
             </li>
             <li>
-                <a href="/owner/kelola_User" class="flex items-center p-3 text-gray-300 hover:bg-[#8B70AC] rounded-lg transition">
+                <a href="/owner/kelolaFasilitas" class="flex items-center p-3 text-gray-300 hover:bg-[#8B70AC] rounded-lg transition">
                     <i data-feather="grid" class="w-5 h-5"></i>
                     <span class="ml-3 sidebar-text">Kelola Fasilitas</span>
                 </a>
             </li>
             <li>
-                <a href="/owner/kelola_Data_Kos" class="flex items-center p-3 text-gray-300 hover:bg-[#8B70AC] rounded-lg transition">
+                <a href="/owner/kelolaGambar" class="flex items-center p-3 text-gray-300 hover:bg-[#8B70AC] rounded-lg transition">
                     <i data-feather="grid" class="w-5 h-5"></i>
                     <span class="ml-3 sidebar-text">Kelola Gambar</span>
                 </a>

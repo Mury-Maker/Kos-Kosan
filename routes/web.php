@@ -137,4 +137,12 @@ Route::middleware(['auth'])->prefix('owner')->group(function () {
         return view('owner.dashboard');
     })->name('owner.dashboard');
 
+    Route::get('/kelolaFasilitas', function () {
+        return view('owner.kelolaFasilitas');
+    })->name('owner.kelolaFasilitas');
+
+    Route::get('/kelolaGambar', function () {
+        return view('owner.kelolaGambar');
+    })->name('owner.kelolaGambar');
+
 });
