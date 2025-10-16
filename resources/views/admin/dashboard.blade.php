@@ -2,15 +2,25 @@
 
 @section('title', 'Dashboard Admin')
 
+@section('styles')
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #mapid { height: 480px; width: 100%; border-radius: 0.5rem; }
+    </style>
+@endsection
+
 @section('content')
+
+{{-- ASUMSI: Controller mengirim $stats dan $kos_terbaru --}}
+
 {{-- Title --}}
 <h2 class="text-2xl font-bold mb-6 ml-6">Dashboard</h2>
 
 {{-- card body --}}
 <div class="px-6">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-        <!-- Card 1 -->
-        <a href="#pembaruan"
+
+        <a href="#"
            class="block bg-white rounded-2xl shadow-md p-6 hover:shadow-xl hover:bg-gray-50 transition">
             <h3 class="flex items-center gap-2 text-lg font-semibold text-[#1ABC9C]">
                 <img src="{{ asset('img/diagram.png') }}" alt="" class="w-5 h-5">
@@ -18,14 +28,14 @@
             </h3>
             <div class="flex items-end justify-between mt-3 mb-2">
                 <div class="flex items-baseline gap-1 ">
-                    <h1 class="text-6xl font-bold text-[#1ABC9C]">5</h1>
+                    <h1 class="text-6xl font-bold text-[#1ABC9C]">{{ $stats['pembaruan_count'] ?? 0 }}</h1>
                     <p class="text-gray-500">data</p>
                 </div>
                 <i class="fa-solid fa-arrow-up text-[#1ABC9C]"></i>
             </div>
         </a>
-        <!-- Card 2 -->
-        <a href="#pembaruan"
+
+        <a href="{{ route('admin.kelola_kos') }}"
            class="block bg-white rounded-2xl shadow-md p-6 hover:shadow-xl hover:bg-gray-50 transition">
             <h3 class="flex items-center gap-2 text-lg font-semibold text-[#FFA700]">
                 <img src="{{ asset('img/diagram.png') }}" alt="" class="w-5 h-5">
@@ -33,14 +43,14 @@
             </h3>
             <div class="flex items-end justify-between mt-3 mb-2">
                 <div class="flex items-baseline gap-1 ">
-                    <h1 class="text-6xl font-bold text-[#FFA700]">25</h1>
+                    <h1 class="text-6xl font-bold text-[#FFA700]">{{ $stats['totalKos'] ?? 0 }}</h1>
                     <p class="text-gray-500">data</p>
                 </div>
                 <i class="fa-solid fa-arrow-up text-[#FFA700]"></i>
             </div>
         </a>
-        <!-- Card 3 -->
-        <a href="#pembaruan"
+
+        <a href="{{ route('admin.kelola_kos') }}?tipe=putra"
            class="block bg-white rounded-2xl shadow-md p-6 hover:shadow-xl hover:bg-gray-50 transition">
             <h3 class="flex items-center gap-2 text-lg font-semibold text-[#1D91FF]">
                 <img src="{{ asset('img/diagram.png') }}" alt="" class="w-5 h-5">
@@ -48,14 +58,14 @@
             </h3>
             <div class="flex items-end justify-between mt-3 mb-2">
                 <div class="flex items-baseline gap-1 ">
-                    <h1 class="text-6xl font-bold text-[#1D91FF]">18</h1>
+                    <h1 class="text-6xl font-bold text-[#1D91FF]">{{ $stats['kosPutra'] ?? 0 }}</h1>
                     <p class="text-gray-500">data</p>
                 </div>
                 <i class="fa-solid fa-arrow-up text-[#1D91FF]"></i>
             </div>
         </a>
-        <!-- Card 3 -->
-        <a href="#pembaruan"
+
+        <a href="{{ route('admin.kelola_kos') }}?tipe=putri"
            class="block bg-white rounded-2xl shadow-md p-6 hover:shadow-xl hover:bg-gray-50 transition">
             <h3 class="flex items-center gap-2 text-lg font-semibold text-[#F96464]">
                 <img src="{{ asset('img/diagram.png') }}" alt="" class="w-5 h-5">
@@ -63,14 +73,14 @@
             </h3>
             <div class="flex items-end justify-between mt-3 mb-2">
                 <div class="flex items-baseline gap-1 ">
-                    <h1 class="text-6xl font-bold text-[#F96464]">2</h1>
+                    <h1 class="text-6xl font-bold text-[#F96464]">{{ $stats['kosPutri'] ?? 0 }}</h1>
                     <p class="text-gray-500">data</p>
                 </div>
                 <i class="fa-solid fa-arrow-up text-[#F96464]"></i>
             </div>
         </a>
-        <!-- Card 5 -->
-        <a href="#pembaruan"
+
+        <a href="{{ route('admin.kelola_kos') }}?tipe=campuran"
            class="block bg-white rounded-2xl shadow-md p-6 hover:shadow-xl hover:bg-gray-50 transition">
             <h3 class="flex items-center gap-2 text-lg font-semibold text-[#800080]">
                 <img src="{{ asset('img/diagram.png') }}" alt="" class="w-5 h-5">
@@ -78,7 +88,7 @@
             </h3>
             <div class="flex items-end justify-between mt-3 mb-2">
                 <div class="flex items-baseline gap-1 ">
-                    <h1 class="text-6xl font-bold text-[#800080]">2</h1>
+                    <h1 class="text-6xl font-bold text-[#800080]">{{ $stats['kosCampur'] ?? 0 }}</h1>
                     <p class="text-gray-500">data</p>
                 </div>
                 <i class="fa-solid fa-arrow-up text-[#800080]"></i>
@@ -87,63 +97,105 @@
     </div>
 </div>
 
-{{-- data kos --}}
+{{-- data kos (Tabel Ringkasan) --}}
 <div class="data-kos mt-6 px-6 py-4 bg-white rounded-2xl shadow-md">
     <div class="flex items-center justify-between mb-4">
-        <h3 class="text-lg font-semibold">Pendataan Kos</h3>
+        <h3 class="text-lg font-semibold">Pendataan Kos Terbaru (5 Data)</h3>
         <div class="flex items-center">
-            <div class="relative w-full">
-                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                    <i class="fas fa-search text-gray-500"></i>
-                </div>
-                <input type="search" placeholder="Cari data..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#1ABC9C] focus:border-[#1ABC9C] text-gray-600 placeholder-gray-400" />
             </div>
-            <button class="btn-filter ml-4 p-2 rounded-full hover:bg-gray-100 transition">
-                <img class="w-6 h-6" src="{{ asset('img/Vector.png') }}" alt="Filter">
-            </button>
-        </div>
     </div>
 
     <div class="overflow-x-auto">
-        <table class="w-full table-auto border-collapse">
+        <table class="w-full table-auto border-collapse rounded-lg shadow-md overflow-hidden"> {{-- Menambahkan kelas styling tabel --}}
             <thead>
-                <tr class="bg-gray-100">
-                    <th class="px-4 py-2 text-left">No</th>
-                    <th class="px-4 py-2 text-left">Nama Kos</th>
-                    <th class="px-4 py-2 text-left">Alamat Kos</th>
-                    <th class="px-4 py-2 text-left">Pemilik Kos</th>
-                    <th class="px-4 py-2 text-left">Status Kos</th>
-                    <th class="px-4 py-2 text-left">Jenis Kos</th>
+                <tr class="bg-[#704E98] text-white text-left"> {{-- Mengubah warna header --}}
+                    <th class="px-4 py-3">No</th>
+                    <th class="px-4 py-3">Nama Kos</th>
+                    <th class="px-4 py-3">Alamat Kos</th>
+                    <th class="px-4 py-3">Pemilik Kos</th>
+                    <th class="px-4 py-3">Nomor Hp</th>
+                    <th class="px-4 py-3">Jenis Kos</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td class="border px-4 py-2">1</td>
-                    <td class="border px-4 py-2">Kos Sejahtera</td>
-                    <td class="border px-4 py-2">Jl. Contoh No. 123</td>
-                    <td class="border px-4 py-2">Budi Santoso</td>
-                    <td class="border px-4 py-2">Aktif</td>
-                    <td class="border px-4 py-2">Campur</td>
-                </tr>
-                <tr>
-                    <td class="border px-4 py-2">2</td>
-                    <td class="border px-4 py-2">Kos Putri Idaman</td>
-                    <td class="border px-4 py-2">Jl. Mawar No. 45</td>
-                    <td class="border px-4 py-2">Siti Aminah</td>
-                    <td class="border px-4 py-2">Aktif</td>
-                    <td class="border px-4 py-2">Putri</td>
-                </tr>
+            <tbody class="divide-y divide-gray-200">
+                @forelse ($kos_terbaru as $item)
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-4 py-3">{{ $loop->iteration }}</td>
+                        <td class="px-4 py-3">{{ $item->nama_kos }}</td>
+                        <td class="px-4 py-3">{{ $item->alamat_lengkap }}</td>
+                        <td class="px-4 py-3">{{ $item->pemilik->nama_pemilik ?? 'N/A' }}</td>
+                        <td class="px-4 py-3">{{ $item->pemilik->nomor_telepon ?? 'N/A' }}</td>
+                        <td class="px-4 py-3 capitalize">{{ $item->tipe_kos }}</td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="6" class="px-4 py-3 text-center text-gray-500">Tidak ada data kos terbaru yang terdaftar.</td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>
 </div>
 
-{{-- map --}}
-<div class="map mt-6 p-6 bg-white rounded-2xl shadow-md">
+{{-- MAP SECTION --}}
+<div class="map mt-6 px-6 py-4 bg-white rounded-2xl shadow-md">
     <h3 class="text-lg font-semibold mb-4">Peta Sebaran Kos di Sukorame</h3>
-    <div class="w-full h-96 md:h-[480px]">
-        <iframe class="w-full h-full"  title="Peta Kos"></iframe>
-    </div>
+    <div id="mapid"></div> {{-- Wadah Peta --}}
 </div>
 
+@endsection
+
+
+@section('scripts')
+    {{-- Leaflet JS --}}
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Data Marker dari Controller
+        const kosMarkers = {!! $markers ?? '[]' !!};
+
+        function initMap() {
+            const defaultLat = -7.8184;
+            const defaultLng = 112.0195;
+            const defaultZoom = 14;
+
+            if (!document.getElementById('mapid')) return;
+
+            const mymap = L.map('mapid').setView([defaultLat, defaultLng], defaultZoom);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                maxZoom: 18,
+            }).addTo(mymap);
+
+            const boundsArray = [];
+
+            kosMarkers.forEach(marker => {
+                const lat = parseFloat(marker.lat);
+                const lng = parseFloat(marker.lng);
+
+                if (isNaN(lat) || isNaN(lng)) return;
+
+                const popupContent = `
+                    <strong>${marker.title}</strong><br>
+                    Tipe: ${marker.tipe}<br>
+                    <small>Lat: ${lat}, Lng: ${lng}</small>
+                `;
+
+                L.marker([lat, lng])
+                    .addTo(mymap)
+                    .bindPopup(popupContent);
+
+                boundsArray.push([lat, lng]);
+            });
+
+            if (boundsArray.length > 0) {
+                mymap.fitBounds(boundsArray, { padding: [50, 50], maxZoom: defaultZoom });
+            } else {
+                mymap.setView([defaultLat, defaultLng], defaultZoom);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', initMap);
+
+    </script>
 @endsection

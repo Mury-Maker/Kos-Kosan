@@ -32,7 +32,7 @@ class OwnerUserSeeder extends Seeder
             DB::table('users')->insert([
                 'email' => $ownerEmail,
                 'password' => Hash::make('owner123'),
-                'role' => 'owner',
+                'role' => 'pemilik',
                 'id_pemilik' => $pemilikId,
                 'status_akun' => 'active',
                 'created_at' => now(),

@@ -2,47 +2,40 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+// Hapus baris 'use Laravel\Sanctum\HasApiTokens;'
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
+    // Hapus HasApiTokens dari daftar use!
     use HasFactory, Notifiable;
+    // ^-- Hanya gunakan HasFactory dan Notifiable
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
+    protected $table = 'users';
+
     protected $fillable = [
-        'name',
         'email',
         'password',
+        'role',
+        'id_pemilik',
+        'status_akun',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
+    protected $casts = [
+        'password' => 'hashed',
+    ];
+
+    // Hubungan One-to-One: User terhubung ke satu Pemilik.
+    public function pemilik()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->belongsTo(Pemilik::class, 'id_pemilik', 'id_pemilik');
     }
 }
