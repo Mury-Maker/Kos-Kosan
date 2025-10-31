@@ -81,7 +81,15 @@
                     @endforelse
                 </div>
             </div>
-
+            {{-- TAMBAHKAN ID DI SINI --}}
+            <div id="fasilitas" class="py-6">
+                <h3 class="text-2xl font-bold mb-4">Fasilitas Utama & Umum</h3>
+                <div class="grid grid-cols-3 gap-4">
+                    @forelse ($kos->fasilitas as $f)
+                        @empty
+                        @endforelse
+                </div>
+            </div>
             <div id="lokasi" class="py-6">
                 <h3 class="text-2xl font-bold mb-4">Lokasi Kos</h3>
                 <div id="map-lokasi"></div>

@@ -1,106 +1,54 @@
-@extends('owner.layouts.app') 
+@extends('owner.layouts.app')
 
-@section('title', 'Kelola Fasilitas')
+@section('title', 'Kelola Fasilitas Kos')
 
 @section('content')
 
-{{-- 1. Header Halaman (judul "Data Kelola Fasilitas") --}}
-<div class="flex justify-between items-center mb-6">
-    {{-- Menggunakan ukuran font dan warna teks yang standar --}}
-    <h3 class="text-xl font-bold text-gray-800">Data Kelola Fasilitas</h3>
+<div class="p-6">
+    <div class="flex justify-between items-center mb-6">
+        <h3 class="text-2xl font-bold text-gray-800">Pilih Kos untuk Kelola Fasilitas</h3>
+    </div>
+
+    <p class="text-sm text-gray-600 mb-6">
+        Silakan pilih unit kos di bawah ini untuk mengatur fasilitas dan harga sewanya secara detail.
+    </p>
+
+    {{-- KOREKSI: Loop menggunakan $kos (daftar kos milik owner) --}}
+    @forelse ($kos as $itemKos)
+        <div class="mb-4 border border-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition duration-200">
+
+            {{-- Tombol/Link untuk mengedit Fasilitas Kos spesifik --}}
+            <a href="{{ route('owner.form_fasilitas', ['kos' => $itemKos->id_kos]) }}"
+               class="p-4 flex justify-between items-center text-white bg-[#704E98] hover:bg-[#5D4B7A] transition">
+
+                <h4 class="text-xl font-bold">
+                    {{ $itemKos->nama_kos }} ({{ ucfirst($itemKos->tipe_kos) }})
+                </h4>
+
+                <span class="text-sm font-semibold whitespace-nowrap">
+                    Kelola Fasilitas →
+                </span>
+            </a>
+
+            {{-- Ringkasan Fasilitas Saat Ini --}}
+            <div class="p-4 bg-white text-gray-700">
+                <span class="font-medium">Fasilitas Utama:</span>
+                @if ($itemKos->fasilitas->isEmpty())
+                    <span class="italic text-red-500">Belum ada fasilitas terpasang.</span>
+                @else
+                    {{-- Menampilkan 3 fasilitas teratas --}}
+                    {{ $itemKos->fasilitas->pluck('nama_fasilitas')->take(3)->implode(', ') }}
+                    @if($itemKos->fasilitas->count() > 3)
+                        ... (+{{ $itemKos->fasilitas->count() - 3 }} lainnya)
+                    @endif
+                @endif
+            </div>
+        </div>
+    @empty
+        <div class="p-6 text-center text-gray-600 border border-gray-200 rounded-xl shadow-lg">
+            <i class="fas fa-home text-4xl mb-3 text-gray-400"></i>
+            <p class="italic font-medium">Anda belum memiliki data kos yang terdaftar. Mohon daftarkan di menu Kelola Kos.</p>
+        </div>
+    @endforelse
 </div>
-
-{{-- 2. Tombol Tambah Fasilitas (Oval/Pill Shape) --}}
-{{-- Menggunakan: rounded-full (oval), warna hijau kustom, dan shadow --}}
-<button class="flex items-center px-6 py-2 mb-6 text-white rounded-full shadow-lg hover:brightness-95 transition duration-150"
-        style="background-color: #17DD2B; font-size: 1.1rem; font-weight: 600;"> 
-    <i class="fas fa-plus mr-3 text-lg"></i> {{-- Ukuran ikon sedikit lebih besar --}}
-    Tambah Fasilitas
-</button>
-
-{{-- 3. Tabel Data Fasilitas --}}
-{{-- Menggunakan: shadow-xl (bayangan lebih tebal) dan rounded-lg (sudut membulat) --}}
-<div class="relative overflow-x-auto shadow-xl rounded-lg"> 
-    <table class="w-full text-base text-left text-gray-800"> {{-- Ukuran font isi tabel sedikit diperbesar --}}
-        
-        {{-- Header Tabel --}}
-        <thead class="text-sm uppercase text-white" 
-               style="background-color: #5D4B7A;"> {{-- Warna ungu gelap sesuai gambar --}}
-            <tr>
-                <th scope="col" class="px-6 py-3 w-16 font-semibold"> {{-- Font lebih tebal --}}
-                    No
-                </th>
-                <th scope="col" class="px-6 py-3 font-semibold"> {{-- Font lebih tebal --}}
-                    Nama Fasilitas
-                </th>
-                <th scope="col" class="px-6 py-3 text-right w-36 font-semibold"> {{-- 'Aksi' rata kanan --}}
-                    Aksi
-                </th>
-            </tr>
-        </thead>
-        
-        {{-- Isi Tabel (Body) --}}
-        <tbody>
-            {{-- Data 1: Kasur --}}
-            <tr class="bg-white border-b border-gray-100 hover:bg-gray-50">
-                <td class="px-6 py-4 font-normal text-gray-800 whitespace-nowrap">
-                    1
-                </td>
-                <td class="px-6 py-4 font-normal text-gray-800">
-                    Kasur
-                </td>
-                <td class="px-6 py-4 text-right"> {{-- Ikon rata kanan --}}
-                    {{-- Ikon Edit (Update) - Warna kuning cerah, ikon besar --}}
-                    <a href="#" class="font-medium text-yellow-500 hover:text-yellow-600 ml-3" title="Edit">
-                        <i class="fas fa-pen-square text-2xl"></i> {{-- Ukuran ikon sangat besar --}}
-                    </a>
-                    {{-- Ikon Delete - Warna merah cerah, ikon besar --}}
-                    <a href="#" class="font-medium text-red-500 hover:text-red-600 ml-2" title="Hapus">
-                        <i class="fas fa-trash-alt text-2xl"></i> {{-- Ukuran ikon sangat besar --}}
-                    </a>
-                </td>
-            </tr>
-
-            {{-- Data 2: Kipas --}}
-            <tr class="bg-white border-b border-gray-100 hover:bg-gray-50">
-                <td class="px-6 py-4 font-normal text-gray-800 whitespace-nowrap">
-                    2
-                </td>
-                <td class="px-6 py-4 font-normal text-gray-800">
-                    Kipas
-                </td>
-                <td class="px-6 py-4 text-right">
-                    <a href="#" class="font-medium text-yellow-500 hover:text-yellow-600 ml-3" title="Edit">
-                        <i class="fas fa-pen-square text-2xl"></i>
-                    </a>
-                    <a href="#" class="font-medium text-red-500 hover:text-red-600 ml-2" title="Hapus">
-                        <i class="fas fa-trash-alt text-2xl"></i>
-                    </a>
-                </td>
-            </tr>
-
-            {{-- Data 3: Almari --}}
-            <tr class="bg-white border-b border-gray-100 hover:bg-gray-50">
-                <td class="px-6 py-4 font-normal text-gray-800 whitespace-nowrap">
-                    3
-                </td>
-                <td class="px-6 py-4 font-normal text-gray-800">
-                    Almari
-                </td>
-                <td class="px-6 py-4 text-right">
-                    <a href="#" class="font-medium text-yellow-500 hover:text-yellow-600 ml-3" title="Edit">
-                        <i class="fas fa-pen-square text-2xl"></i>
-                    </a>
-                    <a href="#" class="font-medium text-red-500 hover:text-red-600 ml-2" title="Hapus">
-                        <i class="fas fa-trash-alt text-2xl"></i>
-                    </a>
-                </td>
-            </tr>
-            
-        </tbody>
-    </table>
-</div>
-
-{{-- Floating Action Button 'Q' dihilangkan karena tidak ada di gambar terbaru --}}
-
 @endsection

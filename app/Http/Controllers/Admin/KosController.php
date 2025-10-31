@@ -10,14 +10,27 @@ use App\Models\Fasilitas;
 use App\Models\HargaKamar;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Arr;
 
 class KosController extends Controller
 {
     // --- KELOLA DATA KOS (tabel_kos) ---
 
-    public function indexKos()
+    public function indexKos(Request $request) // Tambahkan Request
     {
-        $kos = Kos::with('pemilik')->get();
+        $query = Kos::query()->with('pemilik');
+
+        // Filter berdasarkan Nama Kos
+        if ($request->filled('search')) {
+            $query->where('nama_kos', 'like', '%' . $request->search . '%');
+        }
+
+        // Filter berdasarkan Tipe (dari link dashboard)
+        if ($request->filled('tipe') && in_array($request->tipe, ['putra', 'putri', 'campuran'])) {
+            $query->where('tipe_kos', $request->tipe);
+        }
+
+        $kos = $query->get();
         return view('admin.kelolaDataKos', compact('kos'));
     }
 
@@ -26,7 +39,7 @@ class KosController extends Controller
         // FINAL FIX UNTUK UNDEFINED VARIABLE $kos DI BLADE
         // Inisialisasi $kos harus terjadi di sini (Controller) sebelum di-compact
         if (!$kos || !$kos->exists) {
-            $kos = new \App\Models\Kos();
+            $kos = new \App\Models\Kos(); // INI SOLUSINYA
         }
 
         // ... (Sisa logika Controller: ambil $pemilik, $fasilitas, dan set properti tambahan)
@@ -35,7 +48,9 @@ class KosController extends Controller
 
         // Inisialisasi properti untuk View
         $kos->fasilitas_terpilih = $kos->exists ? $kos->fasilitas->pluck('id_fasilitas')->toArray() : [];
-        $kos->harga_kamar = $kos->exists ? $kos->hargaKamar->first() : (object)['harga_terendah' => null, 'harga_tertinggi' => null];
+
+        // Perbaikan di sini juga
+        $kos->harga_kamar = $kos->hargaKamar->first() ?? (object)['harga_terendah' => null, 'harga_tertinggi' => null];
 
         return view('admin.form.formKelolaDataKos', compact('kos', 'pemilik', 'fasilitas'));
     }
@@ -66,15 +81,17 @@ class KosController extends Controller
 
         DB::beginTransaction();
         try {
-            $kos = Kos::create($validated);
+            $kosData = Arr::except($validated, ['harga_terendah', 'harga_tertinggi', 'fasilitas_ids']);
+
+            $kos = Kos::create($kosData);
 
             $kos->hargaKamar()->create([
                 'harga_terendah' => $request->harga_terendah,
                 'harga_tertinggi' => $request->harga_tertinggi,
             ]);
 
-            if ($request->has('fasilitas_ids')) {
-                $kos->fasilitas()->sync($request->fasilitas_ids);
+            if (isset($validated['fasilitas_ids'])) {
+                $kos->fasilitas()->sync($validated['fasilitas_ids']);
             }
 
             DB::commit();
@@ -114,8 +131,9 @@ class KosController extends Controller
 
         DB::beginTransaction();
         try {
+            $kosData = Arr::except($validated, ['harga_terendah', 'harga_tertinggi', 'fasilitas_ids']);
             // 1. Update data Kos utama
-            $kos->update($validated);
+            $kos->update($kosData);
 
             // 2. Update atau buat baru data Harga Kamar (menggunakan updateOrCreate)
             $kos->hargaKamar()->updateOrCreate(

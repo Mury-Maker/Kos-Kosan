@@ -18,21 +18,22 @@
             <i class="fas fa-plus"></i> Tambah Pemilik Kos
         </a>
 
-        <div class="flex items-center space-x-2">
+        <form method="GET" action="{{ route('admin.kelola_pemilik_kos') }}" class="flex items-center space-x-2">
             <div class="relative w-full max-w-xs">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                     <i class="fas fa-search text-gray-500"></i>
                 </div>
                 <input
-                type="search"
-                placeholder="Cari data..."
-                class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#17DD2B] focus:border-[#17DD2B] text-gray-600 placeholder-gray-400"
-                />
+                    type="search"
+                    name="search" {{-- TAMBAHKAN 'name' --}}
+                    value="{{ request('search') }}" {{-- Tampilkan nilai search sebelumnya --}}
+                    placeholder="Cari nama/telepon..."
+                    class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full ..."/>
             </div>
-            <button class="btn-filter p-2 rounded-full hover:bg-gray-100 transition">
+            <button type="submit" class="btn-filter p-2 rounded-full hover:bg-gray-100 transition">
                 <img class="w-5 h-5" src="{{ asset('img/Vector.png') }}" alt="Filter">
             </button>
-        </div>
+        </form>
     </div>
 
     <div class="overflow-x-auto">

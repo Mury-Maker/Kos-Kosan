@@ -47,7 +47,7 @@
             $tipeData = [
                 'putri' => ['label' => 'Kos Perempuan', 'class' => 'tagcwe'],
                 'putra' => ['label' => 'Kos Laki-laki', 'class' => 'tagcwo'],
-                'campuran' => ['label' => 'Kos Bebas', 'class' => 'tagbeb'],
+                'bebas' => ['label' => 'Kos Bebas', 'class' => 'tagbeb'],
             ][$item->tipe_kos] ?? ['label' => 'Tipe Tidak Dikenal', 'class' => 'tagbeb'];
 
             // Mengambil range harga

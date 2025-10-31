@@ -17,6 +17,7 @@ class Pemilik extends Model
         'nama_pemilik',
         'nomor_telepon',
         'alamat_pemilik',
+        'foto_profil',
         'tanggal_daftar',
     ];
 
