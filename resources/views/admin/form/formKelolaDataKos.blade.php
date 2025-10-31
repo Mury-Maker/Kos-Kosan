@@ -18,6 +18,18 @@
 
     {{-- ASUMSI: $kos, $pemilik, $fasilitas sudah dikirimkan dari Controller --}}
 
+    @if (session('success'))
+        <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50" role="alert">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    {{-- INI YANG PALING PENTING --}}
+    @if (session('error'))
+        <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+            <strong>Gagal!</strong> {{ session('error') }}
+        </div>
+    @endif
     {{-- LOGIKA ACTION FORM TAHAN ERROR: Menggunakan $kos->exists --}}
     <form method="POST" action="{{ $kos->exists ? route('admin.update_kos', $kos->id_kos) : route('admin.store_kos') }}">
         @csrf

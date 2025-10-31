@@ -94,8 +94,15 @@
              @endauth
         </div>
 
-        <a href="#" class="notification mr-4 p-2 text-gray-700">
+        <a href="{{ route('admin.notifikasi') }}" class="notification mr-4 p-2 text-gray-700 relative">
             <img src="{{ asset('img/icon_notif.png') }}" class=" w-8 h-8">
+
+            {{-- Badge Notifikasi --}}
+            @if(isset($unreadCount) && $unreadCount > 0)
+                <span class="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center animate-pulse">
+                    {{ $unreadCount > 9 ? '9+' : $unreadCount }}
+                </span>
+            @endif
         </a>
     </nav>
 </header>

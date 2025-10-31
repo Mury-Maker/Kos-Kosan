@@ -13,9 +13,16 @@ class UserController extends Controller
 {
     // --- KELOLA PEMILIK (Data Personal - Tabel tabel_pemilik) ---
 
-    public function indexPemilik()
+    public function indexPemilik(Request $request) // Tambahkan Request
     {
-        $pemilik = Pemilik::with('user')->get();
+        $query = Pemilik::query()->with('user');
+
+        if ($request->filled('search')) {
+            $query->where('nama_pemilik', 'like', '%' . $request->search . '%')
+                ->orWhere('nomor_telepon', 'like', '%' . $request->search . '%');
+        }
+
+        $pemilik = $query->get();
         return view('admin.kelolaPemilikKos', compact('pemilik'));
     }
 
@@ -73,9 +80,18 @@ class UserController extends Controller
 
     // --- KELOLA USER (Akun Login - Tabel users) ---
 
-    public function indexUser()
+    public function indexUser(Request $request) // Tambahkan Request
     {
-        $users = User::with('pemilik')->get();
+        $query = User::query()->with('pemilik');
+
+        if ($request->filled('search')) {
+            $query->where('email', 'like', '%' . $request->search . '%')
+                ->orWhereHas('pemilik', function ($q) use ($request) {
+                    $q->where('nama_pemilik', 'like', '%' . $request->search . '%');
+                });
+        }
+
+        $users = $query->get();
         return view('admin.kelolaUser', compact('users'));
     }
 

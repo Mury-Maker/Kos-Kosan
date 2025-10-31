@@ -13,6 +13,7 @@ return new class extends Migration
             $table->string('nama_pemilik', 150);
             $table->string('nomor_telepon', 15);
             $table->string('alamat_pemilik', 255)->nullable();
+            $table->string('foto_profil', 255)->nullable();
             $table->timestamp('tanggal_daftar')->useCurrent();
             $table->timestamps();
         });

@@ -79,22 +79,21 @@
                     <th class="px-4 py-2 text-left">Kamar Terpakai</th>
                     <th class="px-4 py-2 text-left">Kamar Tersedia</th>
                     <th class="px-4 py-2 text-left">Jumlah Penghuni</th>
-                    <th class="px-4 py-2 text-center rounded-r-lg">Aksi</th>
                 </tr>
             </thead>
             <tbody>
+                {{-- Loop data Kos --}}
+                @forelse ($kosList as $kos)
                 <tr class="border-b hover:bg-gray-50">
-                    <td class="px-4 py-2">1</td>
-                    <td class="px-4 py-2">15</td>
-                    <td class="px-4 py-2">13</td>
-                    <td class="px-4 py-2">2</td>
-                    <td class="px-4 py-2">14</td>
-                    <td class="px-4 py-2 text-center">
-                        <button class="text-yellow-500 hover:text-yellow-600">
-                            <i class="fas fa-pen"></i>
-                        </button>
-                    </td>
+                    <td class="px-4 py-2">{{ $loop->iteration }}</td>
+                    <td class="px-4 py-2">{{ $kos->jumlah_kamar_total }}</td>
+                    <td class="px-4 py-2">{{ $kos->jumlah_kamar_total - $kos->jumlah_kamar_tersedia }}</td>
+                    <td class="px-4 py-2">{{ $kos->jumlah_kamar_tersedia }}</td>
+                    <td class="px-4 py-2">{{ $kos->jumlah_penghuni_saat_ini }}</td>
                 </tr>
+                @empty
+                <tr><td colspan="5" class="text-center p-4">Anda belum memiliki data Kos.</td></tr>
+                @endforelse
             </tbody>
         </table>
     </div>
@@ -117,15 +116,26 @@
                 </tr>
             </thead>
             <tbody>
+                @forelse ($kosList as $kos)
+                    @php
+                        // Ambil data relasi (fasilitas dan harga)
+                        $kos->loadMissing('pemilik', 'hargaKamar', 'fasilitas');
+                        $harga = $kos->hargaKamar->first();
+                        $hargaTampil = ($harga) ? 'Rp '.number_format($harga->harga_terendah).' - '.number_format($harga->harga_tertinggi) : 'N/A';
+                        $fasilitasTampil = $kos->fasilitas->pluck('nama_fasilitas')->take(3)->implode(', ') ?: 'N/A';
+                    @endphp
                 <tr class="border-b hover:bg-gray-50">
-                    <td class="px-4 py-2">1</td>
-                    <td class="px-4 py-2">Kos Bu Rahmat</td>
-                    <td class="px-4 py-2">Kos Perempuan</td>
-                    <td class="px-4 py-2">Jl. Sukorame No. 10</td>
-                    <td class="px-4 py-2">085706037080</td>
-                    <td class="px-4 py-2">500.000 - 300.000</td>
-                    <td class="px-4 py-2">Kasur, Kipas, Lemari</td>
+                    <td class="px-4 py-2">{{ $loop->iteration }}</td>
+                    <td class="px-4 py-2">{{ $kos->nama_kos }}</td>
+                    <td class="px-4 py-2 capitalize">{{ $kos->tipe_kos }}</td>
+                    <td class="px-4 py-2">{{ $kos->alamat_lengkap }}</td>
+                    <td class="px-4 py-2">{{ $kos->pemilik->nomor_telepon ?? 'N/A' }}</td>
+                    <td class="px-4 py-2">{{ $hargaTampil }}</td>
+                    <td class="px-4 py-2">{{ $fasilitasTampil }}</td>
                 </tr>
+                @empty
+                <tr><td colspan="7" class="text-center p-4">Anda belum memiliki data Kos.</td></tr>
+                @endforelse
             </tbody>
         </table>
     </div>

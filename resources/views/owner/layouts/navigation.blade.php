@@ -21,7 +21,7 @@
                 </a>
             </li>
             <li>
-                <a href="/owner/kelola_Pemilik_Kos" class="flex items-center p-3 text-gray-300 hover:bg-[#8B70AC] rounded-lg transition">
+                <a href="/owner/kelolaKos" class="flex items-center p-3 text-gray-300 hover:bg-[#8B70AC] rounded-lg transition">
                     <i data-feather="grid" class="w-5 h-5"></i>
                     <span class="ml-3 sidebar-text">Kelola Kos</span>
                 </a>
@@ -42,16 +42,7 @@
         </ul>
     </nav>
 
-    <!-- Bagian bawah: Tombol Logout -->
-    <div class="p-4 border-t border-gray-600">
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
-            <button type="submit" class="w-full flex items-center p-3 text-gray-300 hover:bg-[#8B70AC] rounded-lg transition">
-                <i data-feather="log-out" class="w-5 h-5"></i>
-                <span class="ml-3 sidebar-text">Logout</span>
-            </button>
-        </form>
-    </div>
+
 </aside>
 
 
@@ -69,15 +60,21 @@
         <div class="relative">
             <!-- Avatar dan Nama -->
             <button id="profileBtn"
-                class="flex items-center p-2 gap-3 rounded-full hover:bg-[#8B70AC] dark:hover:bg-[#8B70AC] transition ">
+                {{-- BUTTON INDUK: Tambahkan 'group' --}}
+                class="flex items-center p-2 gap-3 rounded-full hover:bg-[#8B70AC] dark:hover:bg-[#8B70AC] transition group">
+
                 <img
-                    src="{{ Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : asset('img/default-avatar.png') }}"
+                    src="{{ Auth::user()->pemilik->foto_profil ? asset('storage/' . Auth::user()->pemilik->foto_profil) : asset('img/default-avatar.png') }}"
                     alt="User Avatar"
                     class="w-10 h-10 rounded-full border border-gray-300 object-cover shadow-sm">
-                <span class="font-semibold text-gray-700 dark:text-gray-200 capitalize">
-                    {{ Auth::user()->name ?? 'User' }}
+
+                {{-- PERBAIKAN FOKUS DI SINI --}}
+                <span class="font-semibold text-[#8B70AC] capitalize group-hover:text-white transition">
+                    {{ Auth::user()->pemilik->nama_pemilik ?? Auth::user()->email }}
                 </span>
-                <svg xmlns="http://www.w3.org/2000/svg" id="dropdownIcon" class="w-4 h-4 text-gray-600 dark:text-gray-300 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+
+                {{-- Ikon panah juga harus berubah warna saat hover --}}
+                <svg xmlns="http://www.w3.org/2000/svg" id="dropdownIcon" class="w-4 h-4 text-gray-600 dark:text-gray-300 transition-transform duration-300 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                 </svg>
             </button>
@@ -86,7 +83,7 @@
             <div id="profileDropdown"
                  class="absolute right-0 mt-3 w-56 bg-[#704E98] text-white rounded-xl shadow-lg transform scale-95 opacity-0 invisible transition-all duration-200 origin-top-right z-50 border border-[#8B70AC]/40">
                 <div class="p-2">
-                    <a href="#" class="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-[#8B70AC] transition">
+                    <a href="{{ route('owner.profile') }}" class="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-[#8B70AC] transition">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white/90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A9 9 0 1118.879 6.196 9 9 0 015.121 17.804zM15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
